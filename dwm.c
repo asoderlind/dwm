@@ -2351,7 +2351,6 @@ main(int argc, char *argv[])
 		XCloseDisplay(dpy);
 		return 0;
   }
-  die("3");
 	checkotherwm();
 	setup();
 #ifdef __OpenBSD__
