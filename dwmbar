@@ -27,21 +27,6 @@ volume () {
 	printf "%s\n" "volume ^c#D08770^墳 $(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')"
 }
 
-mpd_volume () {
-	until pgrep mpd; do sleep 2s; done
-	mpd_volume="$(mpc volume | awk '{ print $2 }')"
-	[ "$mpd_volume" = "n/a" ] || 
-#	[ -z "$mpd_volume" ] || 
-	printf "%s\n" "mpdvol ^c#bf616a^| ${mpd_volume}"
-}
-
-music () {
-
-	until pgrep mpd; do sleep 2s; done
-	mpc status | grep -q "paused" && status="" || status=""	
-	printf "%s\n" "music ^c#bf616a^${status} $(mpc current)"
-}
-
 battery () {
 	batstatus=" "
 	for bat in /sys/class/power_supply/BAT?; do
@@ -81,7 +66,7 @@ battery () {
 			c="#a3bc8c"
 			i=""
 		fi
-		batstatus="${batstatus} ^c${c}^${i} ${cap}%"
+		batstatus="^c${c}^${i} ${cap}%"
 	done
 
         printf "%s\n" "battery ${batstatus}"
@@ -98,8 +83,6 @@ while :; do datebar; sleep 1s; done > "$pipe" &
 while :; do clock; sleep 1s; done > "$pipe" &
 while :; do cpu; sleep 30s; done > "$pipe" &
 while :; do mem; sleep 20s; done > "$pipe" &
-while :; do music; mpc idle player; done > "$pipe" &
-while :; do mpd_volume; mpc idle mixer; done > "$pipe" &
 
 # make bar
 while read -r line; do
@@ -116,20 +99,14 @@ while read -r line; do
 		cpu*)
 			cpu="${line:3}"
 			;;
-		music*)
-			music="${line:5}"
-			;;
 		volume*)
 			volume="${line:6}"
-			;;
-		mpdvol*)
-			mpdvol="${line:6}"
 			;;
 		battery*)
 			battery="${line:7}"
 			;;
 esac
-		dwm -s " ${cpu}${mem}${volume}${music}${mpdvol}${battery}${date}${clock} "
+		dwm -s " ${cpu}${mem}${volume}${battery}${date}${clock} "
 done < "$pipe"
 
 
