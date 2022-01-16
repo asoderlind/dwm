@@ -15,8 +15,8 @@ static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#002D4F";
 
 static char selfgcolor[]              = "#eeeeee";
-static char selbgcolor[]              = "#005577";
-static char selbordercolor[]          = "#005577";
+static char selbgcolor[]              = "#b57614"; // Grucbox yellow
+static char selbordercolor[]          = "#b57614"; // Gruvbox yellow
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
