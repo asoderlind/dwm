@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 14;       /* gap pixel between windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int gappx     = 12;       /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -15,8 +15,8 @@ static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#002D4F";
 
 static char selfgcolor[]              = "#eeeeee";
-static char selbgcolor[]              = "#b57614"; // Grucbox yellow
-static char selbordercolor[]          = "#b57614"; // Gruvbox yellow
+static char selbgcolor[]              = "#B57614"; // Gruvbox dark yellow
+static char selbordercolor[]          = "#fe8019"; // Firefox gruvbox highlight orange
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -60,7 +60,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "",      tile },    /* first entry is default */
+	{ " =",      tile },    /* first entry is default */
 	{ "",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
