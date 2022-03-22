@@ -13,6 +13,8 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#002D4F";
+static const unsigned int baralpha = 0xd0;
+static const unsigned int borderalpha = OPAQUE;
 
 static char selfgcolor[]              = "#eeeeee";
 static char selbgcolor[]              = "#B57614"; // Gruvbox dark yellow
@@ -23,6 +25,12 @@ static const char *colors[][3]      = {
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
   [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 	[SchemeHid]  = { col_cyan,  col_gray1, col_cyan  },
+};
+
+static const unsigned int alphas[][3]      = {
+	/*               fg      bg        border     */
+	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
 typedef struct {
